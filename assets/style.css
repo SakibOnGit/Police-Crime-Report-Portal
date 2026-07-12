@@ -1,0 +1,149 @@
+/* =====================================================================
+   Metro Police Crime Registry — "civic case registry" aesthetic
+   Slate ink surfaces · cool paper · restrained brass accent
+   Signature: case identifiers set in monospace with a brass tint
+   ===================================================================== */
+:root{
+  --ink:#151a21;          /* near-black slate — text & dark surfaces */
+  --slate:#1d2733;        /* header / deep surface */
+  --slate-2:#273343;
+  --paper:#eef0f3;        /* cool paper background */
+  --card:#ffffff;
+  --line:#e2e5ea;
+  --line-2:#eceef2;
+  --muted:#69727f;
+  --brass:#a97e2f;        /* signature accent */
+  --brass-soft:#f0e6cf;
+  /* status */
+  --open:#1f4e79;   --open-bg:#e5eefa;
+  --inv:#8a5a00;    --inv-bg:#fbf0d9;
+  --closed:#3f4854; --closed-bg:#e8ebef;
+  --dism:#9a2530;   --dism-bg:#fbe4e6;
+  --danger:#9a2530;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;letter-spacing:-0.01em}
+a{color:inherit;text-decoration:none}
+
+.accentline{height:3px;background:linear-gradient(90deg,var(--brass),#d9be86 40%,var(--brass))}
+
+/* ---- top bar ---- */
+.topbar{background:var(--slate);color:#eef1f5;display:flex;align-items:center;
+  justify-content:space-between;padding:0 26px;height:60px;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:650}
+.badge-mark{color:var(--brass);font-size:18px;line-height:1}
+.brand-txt{font-size:15px;letter-spacing:.01em}
+.brand-txt em{font-style:normal;color:#9aa6b4;font-weight:500}
+.topbar nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.topbar nav a{color:#b7c0cc;font-size:13.5px;font-weight:500;padding:4px 0;position:relative}
+.topbar nav a:hover{color:#fff}
+.topbar nav a.on{color:#fff}
+.topbar nav a.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--brass)}
+.who{font-family:var(--mono);font-size:12px;color:var(--brass);
+  border:1px solid #38455720;background:#ffffff10;padding:3px 9px;border-radius:5px}
+.ghostnav{border:1px solid #3a475a;padding:6px 13px;border-radius:7px;color:#dbe1e8!important}
+.ghostnav:hover{background:#ffffff12}
+
+/* ---- layout ---- */
+.container{max-width:900px;margin:34px auto 60px;padding:0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:26px 28px;margin-bottom:22px;box-shadow:0 1px 0 rgba(20,26,33,.03),0 8px 24px -18px rgba(20,26,33,.25)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--brass);margin:0 0 10px;display:flex;align-items:center;gap:9px}
+.eyebrow::before{content:"";width:16px;height:1px;background:var(--brass)}
+h1{font-size:27px;font-weight:680;letter-spacing:-0.025em;margin:0 0 8px;line-height:1.12}
+h2{font-size:17px;font-weight:640;letter-spacing:-0.02em;margin:0 0 4px}
+.lead{color:var(--muted);margin:2px 0 0;max-width:56ch}
+.section-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+
+/* ---- hero ---- */
+.hero{background:var(--slate);color:#f3f5f8;border:none;position:relative;overflow:hidden;padding:40px 34px}
+.hero h1{font-size:34px;color:#fff;max-width:20ch}
+.hero .lead{color:#aeb9c6;max-width:52ch}
+.hero .eyebrow{color:#d9be86}
+.hero .eyebrow::before{background:#d9be86}
+.hero-track{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+.hero-track input{flex:1;min-width:220px}
+.hero-figure{position:absolute;right:-30px;top:-30px;font-size:230px;color:#ffffff08;
+  font-family:var(--mono);line-height:1;user-select:none;pointer-events:none}
+
+/* ---- grid ---- */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.tile{border:1px solid var(--line);border-radius:12px;padding:20px;background:#fff}
+.tile h2{margin-bottom:6px}
+.tile p{color:var(--muted);margin:0 0 14px;font-size:14px}
+
+/* ---- forms ---- */
+label{display:block;font-size:12.5px;font-weight:600;color:var(--ink);margin:16px 0 6px}
+input,select,textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;
+  font-size:14.5px;font-family:inherit;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--brass);box-shadow:0 0 0 3px var(--brass-soft)}
+textarea{min-height:120px;resize:vertical}
+.hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+.hint code{font-family:var(--mono);background:var(--line-2);padding:1px 6px;border-radius:5px;color:var(--ink)}
+
+/* ---- buttons ---- */
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border:1px solid var(--ink);
+  padding:11px 18px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn:hover{background:#000}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-brass{background:var(--brass);border-color:var(--brass)}
+.btn-brass:hover{background:#946c25}
+.btn-danger{background:#fff;color:var(--danger);border:1px solid #e6c2c5}
+.btn-danger:hover{background:var(--dism-bg)}
+.btn-sm{padding:7px 12px;font-size:13px;border-radius:8px}
+.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+form.inline{display:inline}
+
+/* ---- tables ---- */
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead th{text-align:left;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;padding:0 12px 10px;border-bottom:1px solid var(--line)}
+tbody td{padding:13px 12px;border-bottom:1px solid var(--line-2);vertical-align:middle}
+tbody tr:hover{background:#fafbfc}
+.code{font-family:var(--mono);font-size:12.5px;color:var(--brass);font-weight:600;letter-spacing:-0.02em}
+td .t-title{font-weight:560}
+
+/* ---- status pills ---- */
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.02em;
+  padding:3px 9px;border-radius:999px;text-transform:lowercase}
+.pill-open{color:var(--open);background:var(--open-bg)}
+.pill-investigating{color:var(--inv);background:var(--inv-bg)}
+.pill-closed{color:var(--closed);background:var(--closed-bg)}
+.pill-dismissed{color:var(--dism);background:var(--dism-bg)}
+
+/* ---- stats strip ---- */
+.stats{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.stat{flex:1;min-width:120px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.stat .n{font-family:var(--mono);font-size:26px;font-weight:680;letter-spacing:-0.03em}
+.stat .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+
+/* ---- report detail ---- */
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:13px;margin:10px 0 0}
+.meta b{color:var(--ink);font-weight:600}
+.desc{margin-top:14px;padding:16px 18px;background:#fafafb;border:1px solid var(--line-2);border-radius:10px;
+  border-left:3px solid var(--brass);line-height:1.6}
+.note{padding:14px 16px;border:1px solid var(--line-2);border-radius:10px;margin-top:10px;background:#fff}
+.note .note-meta{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:8px}
+
+/* ---- messages ---- */
+.msg{padding:12px 15px;border-radius:9px;font-size:14px;margin:14px 0}
+.msg-ok{background:var(--open-bg);color:var(--open)}
+.msg-err{background:var(--dism-bg);color:var(--dism)}
+.sqlerror{background:#12161c;color:#ff9d9d;padding:14px 16px;border-radius:10px;
+  font-family:var(--mono);font-size:12.5px;white-space:pre-wrap;overflow-x:auto;line-height:1.5}
+.empty{text-align:center;color:var(--muted);padding:34px 10px}
+.empty .big{font-family:var(--mono);font-size:34px;color:var(--line);display:block;margin-bottom:8px}
+
+/* ---- footer ---- */
+.foot{max-width:900px;margin:0 auto;padding:26px 22px 40px;display:flex;justify-content:space-between;
+  flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+.foot-note{font-family:var(--mono)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
